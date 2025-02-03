@@ -1,0 +1,125 @@
+p{
+    font-weight: bold;
+}
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+
+}
+header span{
+    font-weight: bold;
+}
+
+header li {
+    float: left;
+    list-style-type: none;
+}
+
+header li a {
+    display: block;
+    padding: 8px;
+}
+nav{
+    border-bottom: 1px  solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.zone_card{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(300px, auto);
+}
+@media (max-width: 768px) {
+    .zone_card{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-auto-rows: minmax(300px, auto);
+    }
+    .card{
+        max-width: 100%;
+    }
+}
+@media (min-width: 768px){
+    .zone_card{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: minmax(300px, auto);
+    }
+    .card{
+        max-width: 600px;
+    }
+}
+@media  (min-width: 1200px){
+    .zone_card{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: minmax(300px, auto);
+    }
+    .card{
+        max-width: 768px;
+    }
+}
+@media (min-width: 1200px){
+
+    .card{
+        max-width: 1024px;
+    }
+}
+.card{
+
+    border: 1px solid black;
+    margin: 5px;
+    padding: 8px;
+}
+.img{
+    text-align: center;
+    border-bottom: 1px solid black;
+}
+.footer-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+    align-items: center;
+}
+
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    text-align: center;
+}
+
+.logo-box {
+    background-color: grey;
+
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+
+    margin-bottom: 10px;
+}
+
+.footer-links {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 30px;
+}
+.column ul {
+
+    list-style: none;
+    padding: 0;
+}
