@@ -1,1 +1,8 @@
 <h3>Liste voyage</h3>
+<div *ngFor="let voyage of voyages">
+  <app-voyage-card
+    [voyage]="voyage"
+    (deleteVoyage)="onDeleteVoyage($event)"
+    (viewDetails)="onViewDetails($event)">
+  </app-voyage-card>
+</div>

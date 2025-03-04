@@ -1,0 +1,22 @@
+<div class="card">
+  <h2>{{ voyage.destination }}</h2>
+  <p><strong>Description :</strong> {{ voyage.description }}</p>
+  <p><strong>Prix :</strong> {{ voyage.prix }} €</p>
+
+  <div class="buttons">
+    <button (click)="openConfirmModal()" class="delete-btn">Supprimer</button>
+    <button (click)="onViewDetails($event)" class="details-btn">Voir Détails</button>
+  </div>
+</div>
+
+
+<div class="modal-overlay" *ngIf="showConfirmModal">
+  <div class="modal">
+    <h3>Confirmation</h3>
+    <p>Êtes-vous sûr de vouloir supprimer ce voyage ?</p>
+    <div class="modal-buttons">
+      <button (click)="onDelete($event)" class="confirm-btn">Oui</button>
+      <button (click)="closeConfirmModal()" class="cancel-btn">Annuler</button>
+    </div>
+  </div>
+</div>
