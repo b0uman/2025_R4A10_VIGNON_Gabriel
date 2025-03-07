@@ -1,7 +1,10 @@
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from './components/header.component';
 import { FooterComponent } from './components/footer.component';
-import { Component } from '@angular/core';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
+import {Book} from "./models/book";
+import {BookServiceService} from "./services/book-service.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -24,4 +27,16 @@ import { Component } from '@angular/core';
     `,
   ],
 })
-export class AppComponent {}
+export class AppComponent implements OnInit, OnDestroy {
+  private readonly bookService = inject(BookServiceService);
+  private subscription = new Subscription();
+
+  books: Book[] = [];
+
+  ngOnInit() {
+    this.subscription=this.bookService.findAll().subscribe((data) => {this.books = data});
+  }
+  ngOnDestroy():void {
+    this.subscription.unsubscribe();
+  }
+}

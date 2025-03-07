@@ -1,1 +1,33 @@
-<p>create-book-page works!</p>
+<form [formGroup]="BookForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="title">Titre:</label>
+        <input  type="text" id="title" formControlName="title" />
+        @if (BookForm.get('title')?.invalid && BookForm.get('title')?.touched) {
+            <small *ngIf="BookForm.get('title')?.errors?.['required']">Le titre est obligatoire.</small>
+            <small *ngIf="BookForm.get('title')?.errors?.['minlength']">Minimum 2 caractères.</small>
+            <small *ngIf="BookForm.get('title')?.errors?.['maxlength']">Maximum 35 caractères.</small>
+        }
+    </div>
+
+    <div>
+        <label for="author">Auteur:</label>
+        <input id="author" formControlName="author" type="text" />
+        @if (BookForm.get('author')?.invalid && BookForm.get('author')?.touched) {
+            <small *ngIf="BookForm.get('author')?.errors?.['required']">L'auteur est obligatoire.</small>
+            <small *ngIf="BookForm.get('author')?.errors?.['minlength']">Minimum 5 caractères.</small>
+            <small *ngIf="BookForm.get('author')?.errors?.['maxlength']">Maximum 50 caractères.</small>
+        }
+    </div>
+
+    <div>
+        <label for="description">Description:</label>
+        <textarea id="description" formControlName="description"></textarea>
+        @if (BookForm.get('description')?.invalid && BookForm.get('description')?.touched) {
+            <small *ngIf="BookForm.get('description')?.errors?.['required']">La description est obligatoire.</small>
+            <small *ngIf="BookForm.get('description')?.errors?.['minlength']">Minimum 10 caractères.</small>
+            <small *ngIf="BookForm.get('description')?.errors?.['maxlength']">Maximum 255 caractères.</small>
+        }
+    </div>
+
+    <button type="submit" [disabled]="BookForm.invalid">Créer le livre</button>
+</form>
